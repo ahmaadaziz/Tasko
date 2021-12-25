@@ -5,26 +5,7 @@ import { useState } from "react";
 
 function App() {
   const [showAddTask, setShowAddTask] = useState(false);
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      title: "task 1",
-      time: "thursday at 12:00am",
-      reminder: true,
-    },
-    {
-      id: 2,
-      title: "task 2",
-      time: "friday at 12:00am",
-      reminder: true,
-    },
-    {
-      id: 3,
-      title: "task 3",
-      time: "saturday at 12:00am",
-      reminder: false,
-    },
-  ]);
+  const [tasks, setTasks] = useState([]);
 
   const onAdd = (task) => {
     const id = Math.floor(Math.random() * 1000) + 1;
@@ -52,6 +33,7 @@ function App() {
         showAddTask={showAddTask}
       />
       {showAddTask && <AddTask onAdd={onAdd} />}
+      {tasks.length === 0 && "No tasks to shows"}
       <Tasks tasks={tasks} onDelete={onDelete} onReminder={setReminder} />
     </div>
   );
